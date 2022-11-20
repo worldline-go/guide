@@ -18,9 +18,9 @@ jobs:
       uses: golangci/golangci-lint-action@v3
     - name: Run tests
       run: |
-        [ -f .golangci.yml ] && curl -sSfLkO https://raw.githubusercontent.com/worldline-go/guide/main/lint/.golangci.yml || true
-        golangci-lint run --out-format checkstyle ./... > golangci-lint-report.out
-        go test -v -race -coverprofile=coverage.out -json > test-report.out
+        [[ ! -f ".golangci.yml" ]] && curl -kfsSL -O https://raw.githubusercontent.com/worldline-go/guide/main/lint/.golangci.yml || true
+        GOPATH="$(dirname ${PWD})" golangci-lint run --out-format checkstyle ./... > golangci-lint-report.out || true
+        go test -coverprofile=coverage.out -json ./... > test-report.out
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       with:
@@ -34,6 +34,8 @@ jobs:
           -Dsonar.exclusions=**/vendor/**,**/*_test.go
           -Dsonar.tests=.
           -Dsonar.test.inclusions=**/*_test.go
+          -Dsonar.branch.name=${{ github.ref_name }}
+          -Dsonar.branch.target=${{ github.event.repository.default_branch }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

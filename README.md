@@ -39,6 +39,9 @@ cp -a ci/github-lib/. <myrepo>/.github
 > __SONAR_TOKEN__ is required in most workflows.  
 > Token already exists in the our organization secrets.
 
+SonarCloud not supported direct initialize a new repo.  
+First init repo in SonarCloud after that go to the administation -> Analysis Method -> Disable automatic analysis.
+
 ## Build
 
 [build](/build/) directory contains the building scripts.
