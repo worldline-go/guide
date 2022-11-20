@@ -20,7 +20,7 @@ jobs:
       run: |
         [ -f .golangci.yml ] && curl -sSfLkO https://raw.githubusercontent.com/worldline-go/guide/main/lint/.golangci.yml || true
         golangci-lint run --out-format checkstyle ./... > golangci-lint-report.out
-        go test -coverprofile=coverage.out -json > test-report.out
+        go test -v -race -coverprofile=coverage.out -json > test-report.out
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       with:
