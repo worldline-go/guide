@@ -26,9 +26,9 @@ This repository contains code style guides and continuous integration workflows.
 
 [ci](/ci/) directory contains the workflows for testing, linting, building and deploy the code.
 
-| Workflow      | Description                               |
-| ------------- | ----------------------------------------- |
-| ci/github-lib | For libraries, lint and test (SonarCloud) |
+| Workflow      | Description                       |
+| ------------- | --------------------------------- |
+| ci/github-lib | Build, lint and test (SonarCloud) |
 
 Copy the workflow you want to use into your repository:
 
@@ -40,13 +40,13 @@ cp -a ci/github-lib/. <myrepo>/.github
 > Token already exists in the our organization secrets.
 
 SonarCloud not supported direct initialize a new repo.  
-First init repo in SonarCloud after that go to the administation -> Analysis Method -> Disable automatic analysis.
+First init repo in SonarCloud after that go to the administation -> Analysis Method -> Disable automatic analysis. And just restart the failed workflow.
 
 ## Build
 
-[build](/build/) directory contains the building scripts.
+[build](/build/) directory contains the building scripts. Change project variables in build file.
 
-| File                             | Description                  |
-| -------------------------------- | ---------------------------- |
-| [build/Makefile](build/Makefile) | Build script for Go projects |
-
+| File                                             | Description                  |
+| ------------------------------------------------ | ---------------------------- |
+| [build/Makefile](build/Makefile)                 | Build script for Go projects |
+| [build/.goreleaser.yaml](build/.goreleaser.yaml) | Goreleaser script            |

@@ -12,13 +12,16 @@ GOLANGCI_LINT_VERSION := v1.50.0
 
 .DEFAULT_GOAL := help
 
-.PHONY: build golangci lint run test coverage clean help
+.PHONY: build release golangci lint run test coverage clean help
 
 run: ## Run the application
-	go run $(MAIN)
+	go run $(MAIN_FILE)
 
 build: ## Build the binary file
-	go build -trimpath -ldflags="-s -w -X $(PKG)/config.AppVersion=$(VERSION)" -o $(BINARY) $(MAIN)
+	go build -trimpath -ldflags="-s -w -X $(PKG)/config.AppVersion=$(VERSION)" -o $(BINARY) $(MAIN_FILE)
+
+release: ## Build the binary file with goreleaser
+	goreleaser build --snapshot --rm-dist --single-target
 
 .golangci.yml:
 	@$(MAKE) golangci
