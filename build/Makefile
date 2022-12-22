@@ -18,7 +18,7 @@ run: ## Run the application
 	go run $(MAIN_FILE)
 
 build: ## Build the binary file
-	go build -trimpath -ldflags="-s -w -X $(PKG)/config.AppVersion=$(VERSION)" -o $(BINARY) $(MAIN_FILE)
+	CGO_ENABLED=0 go build -trimpath -ldflags="-s -w -X $(PKG)/config.AppVersion=$(VERSION)" -o $(BINARY) $(MAIN_FILE)
 
 release: ## Build the binary file with goreleaser
 	goreleaser build --snapshot --rm-dist --single-target
