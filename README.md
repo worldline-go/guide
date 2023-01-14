@@ -12,7 +12,7 @@ This repository contains code style guides and continuous integration workflows.
 | [Lint - customized linter](#lint) |
 | [CI - reference ](#ci)            |
 | [Build - script/makefile](#build) |
-| [Badge](badges/README.md)         |
+| [Badge](badge/README.md)         |
 
 ---
 
