@@ -1,0 +1,13 @@
+#!/bin/sh
+# To enable this hook, rename this file to "pre-commit".
+
+CHECK_MESSAGE="^+.*igdcs.com|^+.*okta-emea.com"
+
+for CHANGED_FILE in $(git diff --cached --name-only); do
+	git diff --cached ${CHANGED_FILE} | grep -E -i "${CHECK_MESSAGE}"
+	if [ $? -eq 0 ]; then
+		echo "${CHANGED_FILE} includes one of the prohibited text"
+		echo "Not include -> ${CHECK_MESSAGE}"
+		exit 1
+	fi
+done

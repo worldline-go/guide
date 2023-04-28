@@ -10,6 +10,7 @@ This repository contains code style guides and continuous integration workflows.
 | --------------------------------- |
 | [Go - style guide](style/go.md)   |
 | [Lint - customized linter](#lint) |
+| [Hooks - git hooks](#lint)        |
 | [CI - reference ](#ci)            |
 | [Build - script/makefile](#build) |
 | [Badge](badge/README.md)         |
@@ -21,6 +22,14 @@ This repository contains code style guides and continuous integration workflows.
 | File                                | Description                             |
 | ----------------------------------- | --------------------------------------- |
 | [.golangci.yml](lint/.golangci.yml) | Linting configuration for golangci-lint |
+
+## Hooks
+
+git hooks for pre-commit.
+
+| File                                 | Description                       |
+| ------------------------------------ | --------------------------------- |
+| [hooks/pre-commit](hooks/pre-commit) | Pre-commit hook for golangci-lint |
 
 ## CI
 

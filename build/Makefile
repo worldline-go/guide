@@ -8,11 +8,11 @@ LOCAL_BIN_DIR := $(PWD)/bin
 
 ## golangci configuration
 GOLANGCI_CONFIG_URL   := https://raw.githubusercontent.com/worldline-go/guide/main/lint/.golangci.yml
-GOLANGCI_LINT_VERSION := v1.50.0
+GOLANGCI_LINT_VERSION := v1.52.2
 
 .DEFAULT_GOAL := help
 
-.PHONY: build release golangci lint run test coverage clean help
+.PHONY: run build release golangci lint test coverage html html-gen html-wsl clean help
 
 run: ## Run the application
 	go run $(MAIN_FILE)
