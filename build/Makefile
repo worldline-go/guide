@@ -8,11 +8,11 @@ LOCAL_BIN_DIR := $(PWD)/bin
 
 ## golangci configuration
 GOLANGCI_CONFIG_URL   := https://raw.githubusercontent.com/worldline-go/guide/main/lint/.golangci.yml
-GOLANGCI_LINT_VERSION := v1.52.2
+GOLANGCI_LINT_VERSION := v1.54.1
 
 .DEFAULT_GOAL := help
 
-.PHONY: run build release golangci lint test coverage html html-gen html-wsl clean help
+.PHONY: run build release golangci lint test coverage html html-gen html-wsl help
 
 run: ## Run the application
 	go run $(MAIN_FILE)
@@ -52,9 +52,6 @@ html-gen: ## Export html coverage result
 
 html-wsl: html-gen ## Open html coverage result in wsl
 	@explorer.exe `wslpath -w ./coverage.html` || true
-
-clean: ## Remove previous build
-	@rm -f $(BINARY)
 
 help: ## Display this help screen
 	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
