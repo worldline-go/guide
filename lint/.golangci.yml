@@ -13,16 +13,13 @@ linters-settings:
     threshold: 100
   errcheck:
     check-type-assertions: true
-    check-blank: true
   gocritic:
     enabled-tags:
       - performance
       - style
       - diagnostic
-
     disabled-tags:
       - experimental
-
     settings: # settings passed to gocritic
       hugeParam:
         sizeThreshold: 256 # Receivers still must be <80 bytes
@@ -104,6 +101,7 @@ linters:
     - gomoddirectives
     - depguard
     - varnamelen
+    - gci
 
 issues:
   exclude:
