@@ -76,6 +76,8 @@ linters-settings:
     require-specific: true
   gosmopolitan:
     allow-time-local: true
+  tagalign:
+    sort: false
 
 linters:
   enable-all: true
